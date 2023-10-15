@@ -12,43 +12,40 @@
  */
 int _printf(const char *format, ...)
 {
-        int i;
+        int i, length;
         char car, *str;
-	int length = 0;
         va_list pr;
 
-        va_start(pr, format);
-        for (i = 0; format[i]; i++)
-        {
-                if (format[i] == '%')
-                {
-                        i++;
-                        switch (format[i])
-                        {
-                                case 'c':
-                                        car = va_arg(pr, int);
-                                        putchar(car);
-                                        length++;
-                                        break;
-                                case 's':
-                                        str = va_arg(pr, char *);
-					if (str == NULL)
-					{
-						printf("(nil)");
-					}
-					else
-					{
-						write(1, str, strlen(str));
-						length += strlen(str);
-					}
-                                        break;
-                                case '%':
-                                        putchar('%');
-                                        length++;
-					break;
-				default:
-					length++;
-					break;
+	va_start(pr, format);
+	for (i = 0; format[i]; i++)
+	{
+		if (format[i] == '%')
+		{
+			length = 0;
+
+			if (format[i] == 'c')
+			{
+				car = va_arg(pr, int);
+				putchar(car);
+				length++;
+			}
+			if (format[i] == 's')
+			{
+				str = va_arg(pr, char *);
+				if (str == NULL)
+				{
+					return (NULL);
+				}
+				else
+				{
+					fputs(str, stdout);
+					length += strlen(str);
+				}
+			}
+			if (format[i] == '%')
+			{
+				putchar('%');
+				length++;
 			}
 		}
 		else
