@@ -27,7 +27,7 @@ int _printf(const char *format, ...)
 			{
 				car = va_arg(pr, int);
 
-				putchar(car);
+				_putchar(car);
 				length++;
 			}
 			else if (format[i] == 's')
@@ -36,14 +36,14 @@ int _printf(const char *format, ...)
 
 				while (*str)
 				{
-					putchar(*str);
+					_putchar(*str);
 					str++;
 					length++;
 				}
 			}
 			else if (format[i] == '%')
 			{
-				putchar('%');
+				_putchar('%');
 				length++;
 			}
 		}
