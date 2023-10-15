@@ -33,9 +33,9 @@ int _printf(const char *format, ...)
 			{
 				str = va_arg(pr, char *);
 
-				while (*str)
+				if (str != NULL)
 				{
-					putchar(*str);
+					fputs(str, stdout);
 					length++;
 				}
 			}
