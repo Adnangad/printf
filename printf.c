@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				car = va_arg(pr, int);
-				fputs(car, stdout);
+				putchar(car);
 				length++;
 			}
 			else if (format[i] == 's')
