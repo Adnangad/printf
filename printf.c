@@ -4,6 +4,12 @@
 #include <stdio.h>
 #include <unistd.h>
 
+/**
+ * _printf - creates a function like printf
+ * @format:hold the arguments
+ *
+ * Return:length
+ */
 int _printf(const char *format, ...)
 {
         int i;
