@@ -33,14 +33,10 @@ int _printf(const char *format, ...)
 			{
 				str = va_arg(pr, char *);
 
-				if (str == NULL)
+				while (*s)
 				{
-					printf("(nil)");
-				}
-				else
-				{
-					fputs(str, stdout);
-					length += strlen(str);
+					putchar(*s);
+					length++;
 				}
 			}
 			else if (format[i] == '%')
