@@ -1,9 +1,6 @@
 #include "main.h"
-#include "_putchar.h"
 #include <string.h>
 #include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
 
 /**
  * _printf - creates a function like printf
@@ -28,17 +25,18 @@ int _printf(const char *format, ...)
 			{
 				car = va_arg(pr, int);
 
-				_putchar(car);
+				putchar(car);
 				length++;
 			}
-			else if (format[i] == 's')
+			if (format[i] == 's')
 			{
 				str = va_arg(pr, char *);
 				fputs(str, stdout);
+				length += strlen(str);
 			}
 			else if (format[i] == '%')
 			{
-				_putchar('%');
+				putchar('%');
 				length++;
 			}
 		}
