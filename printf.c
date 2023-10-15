@@ -22,6 +22,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			i++;
 			if (format[i] == 'c')
 			{
 				car = va_arg(pr, int);
