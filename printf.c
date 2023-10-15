@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 's')
 			{
-				str = va_arg(pr, char *i);
+				str = va_arg(pr, char *);
 
 				if (str == NULL)
 				{
