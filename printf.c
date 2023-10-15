@@ -1,6 +1,7 @@
 #include "main.h"
 #include <string.h>
 #include <stdarg.h>
+#include <unistd.h>
 #include <stdio.h>
 
 /**
@@ -14,6 +15,8 @@ int _printf(const char *format, ...)
         int i;
 	int length = 0;
         char car, *str;
+	char per = '%';
+	ssize_t len;
         va_list pr;
 
 	va_start(pr, format);
@@ -25,25 +28,24 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				car = va_arg(pr, int);
-
-				printf("%c", car);
+				write(STDOUT_FILENO, &car, 1);
 				length++;
 			}
-			if (format[i] == 's')
+			else if (format[i] == 's')
 			{
 				str = va_arg(pr, char *);
-				printf("%s", str);
-				length += strlen(str);
+				len = write(STDOUT_FILENO, str, strlen(str));
+				length += len;
 			}
 			else if (format[i] == '%')
 			{
-				putchar('%');
+				write(STDOUT_FILENO, &per, 1);
 				length++;
 			}
 		}
 		else
 		{
-			putchar(format[i]);
+			write(STDOUT_FILENO, &format[i], 1);
 			length++;
 		}
 	}
