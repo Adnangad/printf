@@ -32,12 +32,8 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				str = va_arg(pr, char *);
-
-				if (str != NULL)
-				{
-					fputs(str, stdout);
-					length++;
-				}
+				fputs(str, stdout);
+				length += strlen(str);
 			}
 			else if (format[i] == '%')
 			{
