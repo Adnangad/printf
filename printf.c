@@ -39,8 +39,8 @@ int _printf(const char *format, ...)
 					else
 					{
 						fputs(str, stdout);
+						length += strlen(str);
 					}
-                                        length += strlen(str);
                                         break;
                                 case '%':
                                         putchar('%');
