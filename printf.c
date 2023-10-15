@@ -12,7 +12,8 @@
  */
 int _printf(const char *format, ...)
 {
-        int i, length;
+        int i;
+	int length = 0;
         char car, *str;
         va_list pr;
 
@@ -21,8 +22,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			length = 0;
-
+			i++;
 			if (format[i] == 'c')
 			{
 				car = va_arg(pr, int);
