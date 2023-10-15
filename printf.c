@@ -32,7 +32,14 @@ int _printf(const char *format, ...)
                                         break;
                                 case 's':
                                         str = va_arg(pr, char *);
-                                        fputs(str, stdout);
+					if (str == NULL)
+					{
+						printf("(nil)");
+					}
+					else
+					{
+						fputs(str, stdout);
+					}
                                         length += strlen(str);
                                         break;
                                 case '%':
