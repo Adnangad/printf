@@ -1,4 +1,5 @@
 #include "main.h"
+#include "_putchar.h"
 #include <string.h>
 #include <stdarg.h>
 #include <stdio.h>
