@@ -34,7 +34,7 @@ int _printf(const char *format, ...)
 				str = va_arg(pr, char *);
 				if (str == NULL)
 				{
-					return (NULL);
+					printf("(nil)");
 				}
 				else
 				{
