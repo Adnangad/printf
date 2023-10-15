@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 				putchar(car);
 				length++;
 			}
-			if (format[i] == 's')
+			else if (format[i] == 's')
 			{
 				str = va_arg(pr, char *);
 				if (str == NULL)
@@ -42,7 +42,7 @@ int _printf(const char *format, ...)
 					length += strlen(str);
 				}
 			}
-			if (format[i] == '%')
+			else if (format[i] == '%')
 			{
 				putchar('%');
 				length++;
