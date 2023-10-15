@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 					}
 					else
 					{
-						fputs(str, stdout);
+						write(1, str, strlen(str));
 						length += strlen(str);
 					}
                                         break;
