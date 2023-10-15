@@ -26,13 +26,13 @@ int _printf(const char *format, ...)
 			{
 				car = va_arg(pr, int);
 
-				putchar(car);
+				printf("%c", car);
 				length++;
 			}
 			if (format[i] == 's')
 			{
 				str = va_arg(pr, char *);
-				fputs(str, stdout);
+				printf("%s", str);
 				length += strlen(str);
 			}
 			else if (format[i] == '%')
