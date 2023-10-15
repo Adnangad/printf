@@ -26,12 +26,14 @@ int _printf(const char *format, ...)
 			if (format[i] == 'c')
 			{
 				car = va_arg(pr, int);
+
 				putchar(car);
 				length++;
 			}
 			else if (format[i] == 's')
 			{
 				str = va_arg(pr, char *);
+
 				while (*str)
 				{
 					putchar(*str);
