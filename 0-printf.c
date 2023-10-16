@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
                                 case 's':
                                         str = va_arg(pr, char *);
                                         write(1, str, strlen(str));
-                                        length += strlen(str);
+                                        length += (strlen(str) - 1);
                                         break;
                                 case '%':
                                         write(1, &per, 1);
