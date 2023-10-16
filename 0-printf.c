@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 's')
 			{
-				length += putstr(va_arg(pr, char *));
+				length += putstr(va_arg(pr, char *)) + 1;
 			}
 			else if(format[i] == '%')
 			{
