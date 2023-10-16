@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
         {
 		if (format[i] != '%')
 		{
-			putchar(*format);
+			putchar(format[i]);
 			length++;
 		}
 		else
