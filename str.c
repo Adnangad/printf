@@ -8,16 +8,13 @@
  */
 int putstr(char *str)
 {
-	int j, length;
+	int len = 0;
 
-	if (str)
+	while (*str != '\0')
 	{
-		for (j = 0; str[j] != '\0'; j++)
-		{
-			putchar(str[j]);
-			length++;
-		}
-		return (j);
+		putchar(*str);
+		str++;
+		length++;
 	}
-	return (0);
+	return len;
 }
