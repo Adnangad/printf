@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 			putchar(*format);
 			length++;
 		}
-		else if(*format == '%' && *(format + 1) != '\0')
+		else
 		{
 			format++;
 			if (*format == 'c')
