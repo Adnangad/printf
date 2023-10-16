@@ -1,13 +1,10 @@
 #include "main.h"
-#include <string.h>
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
 
 int _printf(const char *format, ...)
 {
         int i;
         char car, *str;
+	char per = '%';
 	int length = 0;
         va_list pr;
 
@@ -21,16 +18,16 @@ int _printf(const char *format, ...)
                         {
                                 case 'c':
                                         car = va_arg(pr, int);
-                                        putchar(car);
+                                        write(1, &car, 1);
                                         length++;
                                         break;
                                 case 's':
                                         str = va_arg(pr, char *);
-                                        fputs(str, stdout);
+                                        write(1, str, strlen(str));
                                         length += strlen(str);
                                         break;
                                 case '%':
-                                        putchar('%');
+                                        write(1, &per, 1);
                                         length++;
 					break;
 				default:
@@ -40,7 +37,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(format[i]);
+			write(1, format[i], 1);
 			length++;
 		}
 	}
