@@ -8,8 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-        int i;
-	int length = 0;
+        int length = 0;
         char car, *str;
 	char per = '%';
         va_list pr;
@@ -19,28 +18,28 @@ int _printf(const char *format, ...)
 		return (1);
 	}
 	va_start(pr, format);
-	for (i = 0; format[i]; i++)
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format == '%')
 		{
-			i++;
-			if (format[i] == '\0')
+			format++;
+			if (*format == '\0')
 			{
 				break;
 			}
-			if (format[i] == 'c')
+			if (*format == 'c')
 			{
 				car = va_arg(pr, int);
 				write(1, &car, 1);
 				length++;
 			}
-			else if (format[i] == 's')
+			else if (*format == 's')
 			{
 				str = va_arg(pr, char *);
 				write(1, str, strlen(str));
 				length += strlen(str);
 			}
-			else if (format[i] == '%')
+			else if (*format == '%')
 			{
 				write(1, &per, 1);
 				length++;
@@ -48,9 +47,10 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			write(1, &format[i], 1);
+			write(1, &format, 1);
 			length++;
 		}
+		format++;
 	}
 	va_end(pr);
 	return (length);
