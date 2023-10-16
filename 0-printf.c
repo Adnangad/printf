@@ -29,7 +29,6 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%')
                 {
                         i++;
-		}
 			if (format[i] == '\0')
 			{
 				break;
@@ -51,6 +50,7 @@ int _printf(const char *format, ...)
                                         length++;
 					break;
 			}
+		}
 	}
 	va_end(pr);
 	return (length);
