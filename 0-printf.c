@@ -1,5 +1,11 @@
 #include "main.h"
 
+/**
+ * _printf - prints input to stdout
+ * @format:the arguments
+ *
+ * Return:number of characters printed
+ */
 int _printf(const char *format, ...)
 {
         int i;
@@ -8,12 +14,20 @@ int _printf(const char *format, ...)
 	int length = 0;
         va_list pr;
 
+	if (format == NULL)
+	{
+		return (1);
+	}
         va_start(pr, format);
         for (i = 0; format[i]; i++)
         {
                 if (format[i] == '%')
                 {
                         i++;
+			if (format[i] == '\0')
+			{
+				break;
+			}
                         switch (format[i])
                         {
                                 case 'c':
