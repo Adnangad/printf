@@ -14,12 +14,20 @@ int _printf(const char *format, ...)
 	char per = '%';
         va_list pr;
 
+	if (format == NULL)
+	{
+		return (1);
+	}
 	va_start(pr, format);
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{
 			i++;
+			if (format[i] == '\0')
+			{
+				break;
+			}
 			if (format[i] == 'c')
 			{
 				car = va_arg(pr, int);
