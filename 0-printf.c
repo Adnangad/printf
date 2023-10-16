@@ -1,16 +1,14 @@
 #include "main.h"
+#include <string.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
 
-/**
- * _printf - creates a function like printf
- * @format:hold the arguments
- *
- * Return:length
- */
 int _printf(const char *format, ...)
 {
         int i;
         char car, *str;
-        int length = 0;
+	int length = 0;
         va_list pr;
 
         va_start(pr, format);
@@ -34,7 +32,10 @@ int _printf(const char *format, ...)
                                 case '%':
                                         putchar('%');
                                         length++;
-                                        break;
+					break;
+				default:
+					length++;
+					break;
 			}
 		}
 		else
