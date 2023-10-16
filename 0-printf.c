@@ -51,7 +51,6 @@ int _printf(const char *format, ...)
                                         length++;
 					break;
 			}
-		}
 	}
 	va_end(pr);
 	return (length);
