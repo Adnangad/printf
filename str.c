@@ -14,7 +14,7 @@ int putstr(char *str)
 	{
 		putchar(*str);
 		str++;
-		length++;
+		len++;
 	}
 	return len;
 }

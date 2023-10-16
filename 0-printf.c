@@ -9,8 +9,8 @@
 int _printf(const char *format, ...)
 {
         int i, length = 0;
-        char per = '%';
-        va_list pr;
+	va_list pr;
+
 	if (format == NULL)
 	{
 		return (-1);
@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				printc(va_arg(ptr, int));
+				printc(va_arg(pr, int));
 				length++;
 			}
 			else if (format[i] == 's')
