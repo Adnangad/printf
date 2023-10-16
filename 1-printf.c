@@ -13,10 +13,6 @@ int _printf(const char *format, ...)
 	char per = '%';
         va_list pr;
 
-	if (format == NULL)
-	{
-		return (1);
-	}
 	va_start(pr, format);
 	while (*format)
 	{
