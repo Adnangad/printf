@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			{
 				break;
 			}
-			else {switch (format[i])
+			switch (format[i])
                         {
                                 case 'c':
                                         car = va_arg(pr, int);
@@ -49,7 +49,6 @@ int _printf(const char *format, ...)
                                         write(1, &per, 1);
                                         length++;
 					break;
-			}
 			}
 		}
 	}
