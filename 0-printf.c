@@ -16,26 +16,26 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
         va_start(pr, format);
-	while (*format)
+	for (i = 0; format[i] != '\0'; i++)
         {
-		if (*format != '%')
+		if (format[i] != '%')
 		{
 			putchar(*format);
 			length++;
 		}
 		else
 		{
-			format++;
-			if (*format == 'c')
+			i++;
+			if (format[i] == 'c')
 			{
 				printc(va_arg(pr, int));
 				length++;
 			}
-			else if (*format == 's')
+			else if (format[i] == 's')
 			{
 				length += putstr(va_arg(pr, char *));
 			}
-			else if(*format == '%')
+			else if(format[i] == '%')
 			{
 				putchar('%');
 				length++;
