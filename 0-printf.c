@@ -35,6 +35,11 @@ int _printf(const char *format, ...)
 			{
 				length += putstr(va_arg(pr, char *));
 			}
+			else if(format[i] == '%')
+			{
+				putchar('%');
+				length++;
+			}
 		}
 	}
 	va_end(pr);
