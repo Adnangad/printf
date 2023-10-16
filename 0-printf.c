@@ -51,6 +51,11 @@ int _printf(const char *format, ...)
 					break;
 			}
 		}
+		if (format[i] != '%')
+		{
+			write(1, &format[i], 1);
+			length++;
+		}
 	}
 	va_end(pr);
 	return (length);
