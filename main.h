@@ -8,5 +8,5 @@
 
 int _printf(const char *format, ...);
 int putstr(char *str);
-int printc(char c);
+void printc(char c);
 #endif

@@ -3,10 +3,9 @@
 /**
  * printc - prints char
  *
- * Return:c
+ * Return:none
  */
-int printc(char c)
+void printc(char c)
 {
-	write(1, &c, 1);
-	return (1);
+	putchar(c);
 }

@@ -8,9 +8,8 @@
  */
 int _printf(const char *format, ...)
 {
-        int i;
-        char car, *str, per = '%';
-	int length = 0;
+        int i, length = 0;
+        char per = '%';
         va_list pr;
 
 	if (format == NULL)
@@ -22,29 +21,29 @@ int _printf(const char *format, ...)
         {
 		if (format[i] != '%')
 		{
-			printc(format[i]);
+			putchar(format[i]);
 			length++;
 		}
-		else if (format[i] == '%')
-                {
-                        i++;
-			switch (format[i])
-                        {
-                                case 'c':
-                                        printc(va_arg(pr, int);
-                                        length++;
-                                        break;
-                                case 's':
-                                        putstr(va_arg(pr, char *));
-                                        length += strlen(str);
-                                        break;
-                                case '%':
-                                        printc(per);
-                                        length++;
-					break;
+		else
+		{
+			i++;
+			if (format[i] == 'c')
+			{
+				printc(va_arg(pr, int));
+				length++;
+			}
+			else if(format[i] == 's')
+			{
+				length += putstr(va_arg(pr, char *));
+			}
+			else if(format [i] == '%')
+			{
+				putchar(per);
+				length++;
 			}
 		}
 	}
 	va_end(pr);
 	return (length);
 }
+		

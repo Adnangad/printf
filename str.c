@@ -8,14 +8,16 @@
  */
 int putstr(char *str)
 {
-	int i;
+	int j, length;
 
-	if (str != NULL)
+	if (str)
 	{
-		for (i = 0; str[i] != '\0'; i++)
+		for (j = 0; str[j] != '\0'; j++)
 		{
-			putchar(str[i]);
+			putchar(str[j]);
+			length++;
 		}
+		return (j);
 	}
-	return (i);
+	return (0);
 }
