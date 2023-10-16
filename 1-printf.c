@@ -6,52 +6,36 @@
  *
  * Return:length
  */
-int _printf(const char *format, ...)
-{
-        int length = 0;
-        char car, *str;
-	char per = '%';
-        va_list pr;
+int _printf(const char *format, ...) {
+    int i;
+    int length = 0;
+    char car, *str;
+    char per = '%';
+    ssize_t len;
+    va_list pr;
 
-	va_start(pr, format);
-	if (format == NULL)
-	{
-		return (-1);
-	}
-	while (*format)
-	{
-		if (*format == '%')
-		{
-			format++;
-			if (*format == '\0')
-			{
-				break;
-			}
-			if (*format == 'c')
-			{
-				car = va_arg(pr, int);
-				write(1, &car, 1);
-				length++;
-			}
-			else if (*format == 's')
-			{
-				str = va_arg(pr, char *);
-				write(1, str, strlen(str));
-				length += strlen(str);
-			}
-			else if (*format == '%')
-			{
-				write(1, &per, 1);
-				length++;
-			}
-		}
-		else
-		{
-			write(1, format, 1);
-			length++;
-		}
-		format++;
-	}
-	va_end(pr);
-	return (length);
+    va_start(pr, format);
+    for (i = 0; format[i]; i++) {
+        if (format[i] == '%') {
+            i++;
+            if (format[i] == 'c') {
+                car = va_arg(pr, int);
+                write(STDOUT_FILENO, &car, 1);
+                length++;
+            } else if (format[i] == 's') {
+                str = va_arg(pr, char *);
+                len = write(STDOUT_FILENO, str, strlen(str));
+                length += len;
+            } else if (format[i] == '%') {
+                write(STDOUT_FILENO, &per, 1);
+                length++;
+            }
+        } else {
+            write(STDOUT_FILENO, &format[i], 1);
+            length++;
+        }
+    }
+    va_end(pr);
+    return length;
 }
+
