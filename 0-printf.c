@@ -8,7 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
-        int i, length = 0;
+        int length = 0;
 	va_list pr;
 
 	if (format == NULL)
@@ -16,26 +16,26 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
         va_start(pr, format);
-	for (i = 0; format[i]; i++)
+	while (*format)
         {
-		if (format[i] != '%')
+		if (*format != '%')
 		{
-			putchar(format[i]);
+			putchar(*format);
 			length++;
 		}
-		else
+		else if(*format == '%' && *(format + 1) != '\0')
 		{
-			i++;
-			if (format[i] == 'c')
+			format++;
+			if (*format == 'c')
 			{
 				printc(va_arg(pr, int));
 				length++;
 			}
-			else if (format[i] == 's')
+			else if (*format == 's')
 			{
-				length += putstr(va_arg(pr, char *)) + 1;
+				length += putstr(va_arg(pr, char *));
 			}
-			else if(format[i] == '%')
+			else if(*format == '%')
 			{
 				putchar('%');
 				length++;
