@@ -49,9 +49,6 @@ int _printf(const char *format, ...)
                                         write(1, &per, 1);
                                         length++;
 					break;
-				default:
-					length++;
-					break;
 			}
 		}
 	}
