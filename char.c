@@ -2,6 +2,7 @@
 
 /**
  * printc - prints char
+ * @c:char to be printed
  *
  * Return:none
  */
