@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
         {
 		if (format[i] != '%')
 		{
-			putchar(format[i]);
+			printc(format[i]);
 			length++;
 		}
 		else
@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 			}
 			else if(format[i] == '%')
 			{
-				putchar('%');
+				printc('%');
 				length++;
 			}
 		}
