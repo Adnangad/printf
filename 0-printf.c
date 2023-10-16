@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	}
         va_start(pr, format);
-        for (i = 0; format[i]; i++)
+        for (i = 0; format[i] != '\0'; i++)
         {
 		if (format[i] != '%')
 		{
@@ -29,10 +29,6 @@ int _printf(const char *format, ...)
 		else if (format[i] == '%')
                 {
                         i++;
-			if (format[i] == '\0')
-			{
-				break;
-			}
 			switch (format[i])
                         {
                                 case 'c':
