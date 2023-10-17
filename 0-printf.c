@@ -83,7 +83,7 @@ void print_bin(int num, int *length)
 {
 	int j, i = 0;
 	int in = 0;
-	char temp, bin[33];
+	char bin[33];
 
 	if (num == 0)
 	{
