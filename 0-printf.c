@@ -1,6 +1,8 @@
 #include "main.h"
 #include <stdlib.h>
 
+static void print_int(int num, int *length);
+
 /**
  * _printf - prints input to stdout
  * @format:the arguments
@@ -9,7 +11,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int i;
+	int i, num;
 	int length = 0;
 	va_list pr;
 
@@ -37,6 +39,11 @@ int _printf(const char *format, ...)
 			{
 				length += putstr(va_arg(pr, char *));
 			}
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				num = va_arg(pr, int);
+				print_int(num, &length);
+			}
 			else if (format[i] == '%')
 			{
 				printc('%');
@@ -46,4 +53,18 @@ int _printf(const char *format, ...)
 	}
 	va_end(pr);
 	return (length);
+}
+/**
+ * print_int - prints int
+ * @num:int
+ * @length:no of char
+ *
+ * Return:none.
+ */
+static void print_int(int num, int *length)
+{
+	char hold[12];
+
+	sprintf(hold, "%d", num);
+	length += putstr(hold);
 }
