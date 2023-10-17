@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdlib.h>
 
-static void print_int(int num, int *length);
+void print_int(int num, int *length);
 
 /**
  * _printf - prints input to stdout
@@ -61,7 +61,7 @@ int _printf(const char *format, ...)
  *
  * Return:none.
  */
-static void print_int(int num, int *length)
+void print_int(int num, int *length)
 {
 	char hold[12];
 
