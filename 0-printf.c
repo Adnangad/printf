@@ -66,5 +66,5 @@ void print_int(int num, int *length)
 	char hold[12];
 
 	sprintf(hold, "%d", num);
-	length += putstr(hold);
+	*length += putstr(hold);
 }
