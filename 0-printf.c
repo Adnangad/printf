@@ -81,14 +81,29 @@ void print_int(int num, int *length)
  */
 void print_bin(int num, int *length)
 {
-	int i;
-	char bin[33];
-	bin[32] = '\0';
+	int start, end, i = 0;
+	char temp, bin[33];
 
-	for (i = 31; i >= 0; i--)
+	if (num == 0)
 	{
-		bin[i] = (num & 1) ? '1' : '0';
+		bin[i++] = '\0';
+	}
+	while (num > 0)
+	{
+		bin[i++] = (num & 1) ? '1' : '0';
 		num >>= 1;
 	}
-	*length += putstr(binary, length);
+	bin[i] = '\0';
+	start = 0;
+	end = i - 1;
+
+	while (start < end)
+	{
+		temp = bin[start];
+		bin[start] = bin[end];
+		bin[end] = temp;
+		start++;
+		end--;
+	}
+	*length += putstr(bin);
 }
