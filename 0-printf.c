@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void print_int(int num, int *length);
-void print_bin(int num, int *length);
+int print_bin(va_list pr);
 
 /**
  * _printf - prints input to stdout
@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 'b')
 			{
-				print_bin(va_arg(pr, unsigned int), &length);
+				print_bin(pr);
 			}
 			else if (format[i] == '%')
 			{
@@ -74,30 +74,35 @@ void print_int(int num, int *length)
 }
 /**
  * print_bin - converts int to binary
- * @num:the number to be converted
- * @length:the char length
+ * @pr:the number to be converted
  *
  * Return:none
  */
-void print_bin(int num, int *length)
+int print_bin(va_list pr)
 {
-	int j, i = 0;
-	int in = 0;
-	char bin[33];
+	int length = 0;
+	unsigned int num = va_arg(pr, unsigned int);
+	int led = 1;
+	int i, bit;
 
-	if (num == 0)
+	for (i = 31; i >= 0; i--)
 	{
-		bin[i++] = '\0';
+		bit = (num >> i) & 1;
+
+		if (bit)
+		{
+			led = 0;
+		}
+		if (!led)
+		{
+			putchar(bit + '0');
+			length++;
+		}
 	}
-	while (num > 0)
+	if (length == 0)
 	{
-		bin[in++] = (num & 1) ? '1' : '0';
-		num >>= 1;
+		putchar('0');
+		length = 1;
 	}
-	for (j = in - 1; j >= 0; j--)
-	{
-		bin[i++] = bin[j];
-	}
-	bin[i] = '\0';
-	*length += putstr(bin);
+	return (length);
 }
