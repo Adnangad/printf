@@ -9,5 +9,4 @@
 int _printf(const char *format, ...);
 int putstr(char *str);
 void printc(char c);
-static void print_int(int num, int *length);
 #endif
