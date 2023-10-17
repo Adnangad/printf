@@ -30,10 +30,12 @@ int putstr(char *str)
 /**
  * printc - prints char
  * @c:char to be printed
+ * @length:no of char
  *
  * Return:none
  */
-void printc(char c)
+void printc(char c, int *length)
 {
 	putchar(c);
+	(*length)++;
 }

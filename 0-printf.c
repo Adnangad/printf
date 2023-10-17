@@ -32,8 +32,7 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				printc(va_arg(pr, int));
-				length++;
+				printc(va_arg(pr, int) &length);
 			}
 			else if (format[i] == 's')
 			{
