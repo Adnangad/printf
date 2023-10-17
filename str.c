@@ -9,7 +9,7 @@ int putstr(char *str, int *length);
  *
  * Return:len
  */
-int putstr(char *str, int *length)
+int putstr(char *str)
 {
 	int len = 0;
 
@@ -24,19 +24,16 @@ int putstr(char *str, int *length)
 		str++;
 		len++;
 	}
-	*length += len;
 	return (len);
 }
 
 /**
  * printc - prints char
  * @c:char to be printed
- * @length:no of char
  *
  * Return:none
  */
-void printc(char c, int *length)
+void printc(char c)
 {
 	putchar(c);
-	(*length)++;
 }
