@@ -46,7 +46,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 'b')
 			{
-				print_bin(pr);
+				length += print_bin(pr);
 			}
 			else if (format[i] == '%')
 			{
