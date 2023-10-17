@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 void print_int(int num, int *length);
+void print_bin(int num, int *length);
 
 /**
  * _printf - prints input to stdout
