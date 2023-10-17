@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdlib.h>
 
 /**
  * _printf - prints input to stdout
@@ -8,8 +9,9 @@
  */
 int _printf(const char *format, ...)
 {
-	int i;
+	int i, num;
 	int length = 0;
+	char buf[12];
 	va_list pr;
 
 	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
@@ -36,13 +38,11 @@ int _printf(const char *format, ...)
 			{
 				length += putstr(va_arg(pr, char *));
 			}
-			else if (format[i] == 'd')
+			else if (format[i] == 'd' || format[i] == 'i')
 			{
-				print_int(va_arg(pr, int));
-			}
-			else if (format[i] == 'i')
-			{
-				print_int(va_arg(pr, int));
+				num = (va_arg(pr, int));
+				sprintf(buf, "%d", num);
+				length += putstr(buf);
 			}
 			else if (format[i] == '%')
 			{
