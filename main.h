@@ -7,6 +7,6 @@
 #include <unistd.h>
 
 int _printf(const char *format, ...);
-int putstr(char *str);
+int putstr(char *str, int *length);
 void printc(char c, int *length);
 #endif

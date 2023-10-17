@@ -11,8 +11,7 @@ void print_int(int num, int *length);
  */
 int _printf(const char *format, ...)
 {
-	int i, num;
-	int length = 0;
+	int i, num, length = 0;
 	va_list pr;
 
 	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
@@ -24,19 +23,18 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%')
 		{
-			printc(format[i]);
-			length++;
+			printc(format[i], &length);
 		}
 		else
 		{
 			i++;
 			if (format[i] == 'c')
 			{
-				printc(va_arg(pr, int) &length);
+				printc(va_arg(pr, int), &length);
 			}
 			else if (format[i] == 's')
 			{
-				length += putstr(va_arg(pr, char *));
+				length += putstr(va_arg(pr, char *), &length);
 			}
 			else if (format[i] == 'd' || format[i] == 'i')
 			{
@@ -45,8 +43,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 			{
-				printc('%');
-				length++;
+				printc('%', &length);
 			}
 		}
 	}
@@ -65,5 +62,5 @@ void print_int(int num, int *length)
 	char hold[12];
 
 	sprintf(hold, "%d", num);
-	*length += putstr(hold);
+	*length += putstr(hold, length);
 }

@@ -1,7 +1,7 @@
 #include "main.h"
 
-void printc(char c);
-int putstr(char *str);
+void printc(char c, int *length);
+int putstr(char *str, int *length);
 
 /**
  * putstr - prints string
@@ -9,7 +9,7 @@ int putstr(char *str);
  *
  * Return:len
  */
-int putstr(char *str)
+int putstr(char *str, int *length)
 {
 	int len = 0;
 
@@ -24,6 +24,7 @@ int putstr(char *str)
 		str++;
 		len++;
 	}
+	*length += len;
 	return (len);
 }
 
