@@ -45,7 +45,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == '%')
 			{
-				printc('%');
+				putchar('%');
 				length++;
 			}
 		}
