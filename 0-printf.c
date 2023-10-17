@@ -38,12 +38,6 @@ int _printf(const char *format, ...)
 			{
 				length += putstr(va_arg(pr, char *));
 			}
-			else if (format[i] == 'd' || format[i] == 'i')
-			{
-				num = (va_arg(pr, int));
-				sprintf(buf, "%d", num);
-				length += putstr(buf);
-			}
 			else if (format[i] == '%')
 			{
 				printc('%');
