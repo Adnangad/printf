@@ -10,6 +10,11 @@ int putstr(char *str)
 {
 	int len = 0;
 
+	if (str == NULL)
+	{
+		str = "(nil)";
+	}
+
 	while (*str != '\0')
 	{
 		putchar(*str);

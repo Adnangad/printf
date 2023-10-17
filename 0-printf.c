@@ -8,16 +8,17 @@
  */
 int _printf(const char *format, ...)
 {
-        int i, length = 0;
+	int i;
+	int length = 0;
 	va_list pr;
 
 	if (!format || (format[0] == '%' && format[1] == '\0') || format == NULL)
 	{
 		return (-1);
 	}
-        va_start(pr, format);
+	va_start(pr, format);
 	for (i = 0; format && format[i] != '\0'; i++)
-        {
+	{
 		if (format[i] != '%')
 		{
 			printc(format[i]);
@@ -35,7 +36,7 @@ int _printf(const char *format, ...)
 			{
 				length += putstr(va_arg(pr, char *));
 			}
-			else if(format[i] == '%')
+			else if (format[i] == '%')
 			{
 				printc('%');
 				length++;
