@@ -9,5 +9,5 @@
 int _printf(const char *format, ...);
 int putstr(char *str);
 void printc(char c);
-int print_int(int num, int *length);
+static void print_int(int num, int *length);
 #endif
