@@ -1,7 +1,7 @@
 #include "main.h"
 
-void printc(char c, int *length);
-int putstr(char *str, int *length);
+void printc(char c);
+int putstr(char *str);
 
 /**
  * putstr - prints string
