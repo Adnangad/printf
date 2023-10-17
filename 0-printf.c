@@ -36,6 +36,14 @@ int _printf(const char *format, ...)
 			{
 				length += putstr(va_arg(pr, char *));
 			}
+			else if (format[i] == 'd')
+			{
+				print_int(va_arg(pr, int));
+			}
+			else if (format[i] == 'i')
+			{
+				print_int(va_arg(pr, int));
+			}
 			else if (format[i] == '%')
 			{
 				printc('%');
