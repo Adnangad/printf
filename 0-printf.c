@@ -81,7 +81,8 @@ void print_int(int num, int *length)
  */
 void print_bin(int num, int *length)
 {
-	int start, end, i = 0;
+	int j, i = 0;
+	int in = 0;
 	char temp, bin[33];
 
 	if (num == 0)
@@ -90,20 +91,13 @@ void print_bin(int num, int *length)
 	}
 	while (num > 0)
 	{
-		bin[i++] = (num & 1) ? '1' : '0';
+		bin[in++] = (num & 1) ? '1' : '0';
 		num >>= 1;
 	}
-	bin[i] = '\0';
-	start = 0;
-	end = i - 1;
-
-	while (start < end)
+	for (j = in - 1; j >= 0; j--)
 	{
-		temp = bin[start];
-		bin[start] = bin[end];
-		bin[end] = temp;
-		start++;
-		end--;
+		bin[i++] = bin[j];
 	}
+	bin[i] = '\0';
 	*length += putstr(bin);
 }
