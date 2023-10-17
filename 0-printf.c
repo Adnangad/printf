@@ -43,6 +43,10 @@ int _printf(const char *format, ...)
 				num = va_arg(pr, int);
 				print_int(num, &length);
 			}
+			else if (format[i] == 'b')
+			{
+				print_bin(va_arg(pr, unsigned int), &length);
+			}
 			else if (format[i] == '%')
 			{
 				putchar('%');
@@ -66,4 +70,24 @@ void print_int(int num, int *length)
 
 	sprintf(hold, "%d", num);
 	*length += putstr(hold);
+}
+/**
+ * print_bin - converts int to binary
+ * @num:the number to be converted
+ * @length:the char length
+ *
+ * Return:none
+ */
+void print_bin(int num, int *length)
+{
+	int i;
+	char bin[33];
+	bin[32] = '\0';
+
+	for (i = 31; i >= 0; i--)
+	{
+		bin[i] = (num & 1) ? '1' : '0';
+		num >>= 1;
+	}
+	*length += putstr(binary, length);
 }
