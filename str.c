@@ -21,5 +21,5 @@ int putstr(char *str)
 		str++;
 		len++;
 	}
-	return len;
+	return (len);
 }
