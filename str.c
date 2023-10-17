@@ -1,5 +1,8 @@
 #include "main.h"
 
+void printc(char c);
+int putstr(char *str);
+
 /**
  * putstr - prints string
  * @str:string to be printed
@@ -22,4 +25,15 @@ int putstr(char *str)
 		len++;
 	}
 	return (len);
+}
+
+/**
+ * printc - prints char
+ * @c:char to be printed
+ *
+ * Return:none
+ */
+void printc(char c)
+{
+	putchar(c);
 }
